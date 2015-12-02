@@ -330,7 +330,7 @@
     
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:@"删除"];
+                                                title:@"取消收藏"];
     
     return rightUtilityButtons;
 }
@@ -352,6 +352,7 @@
                     if( resb.msuccess )
                     {
                         [SVProgressHUD showSuccessWithStatus:resb.mmsg];
+                        [self.tempArray removeObjectAtIndex:indexPath.row];
                         [self.tableView beginUpdates];
                         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                         [self.tableView endUpdates];
@@ -372,6 +373,7 @@
                     if( resb.msuccess )
                     {
                         [SVProgressHUD showSuccessWithStatus:resb.mmsg];
+                        [self.tempArray removeObjectAtIndex:indexPath.row];
                         [self.tableView beginUpdates];
                         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                         [self.tableView endUpdates];
