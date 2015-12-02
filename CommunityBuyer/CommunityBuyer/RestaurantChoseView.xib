@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="nl3-hF-uYd" customClass="RestaurantChoseView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5h-IF-ZJc">
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="400"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hIh-3W-z5g">
+                    <rect key="frame" x="120" y="0.0" width="200" height="400"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="hIh-3W-z5g" firstAttribute="leading" secondItem="l5h-IF-ZJc" secondAttribute="trailing" id="Cs9-TY-0MC"/>
+                <constraint firstItem="l5h-IF-ZJc" firstAttribute="leading" secondItem="nl3-hF-uYd" secondAttribute="leading" id="ELB-i3-0d7"/>
+                <constraint firstItem="l5h-IF-ZJc" firstAttribute="top" secondItem="nl3-hF-uYd" secondAttribute="top" id="HML-co-8At"/>
+                <constraint firstAttribute="bottom" secondItem="l5h-IF-ZJc" secondAttribute="bottom" id="P7M-jv-swt"/>
+                <constraint firstAttribute="trailing" secondItem="hIh-3W-z5g" secondAttribute="trailing" id="Sbd-wM-ROD"/>
+                <constraint firstItem="hIh-3W-z5g" firstAttribute="top" secondItem="nl3-hF-uYd" secondAttribute="top" id="UTX-MM-voD"/>
+                <constraint firstAttribute="bottom" secondItem="hIh-3W-z5g" secondAttribute="bottom" id="q0j-Oe-94L"/>
+                <constraint firstItem="l5h-IF-ZJc" firstAttribute="width" secondItem="hIh-3W-z5g" secondAttribute="width" multiplier="3:5" id="t8s-PU-4PN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="mLeftTableView" destination="l5h-IF-ZJc" id="NoU-kL-dCD"/>
+                <outlet property="mRightTableView" destination="hIh-3W-z5g" id="b7j-8F-mLz"/>
+            </connections>
+            <point key="canvasLocation" x="-117" y="-41"/>
+        </view>
+    </objects>
+</document>
