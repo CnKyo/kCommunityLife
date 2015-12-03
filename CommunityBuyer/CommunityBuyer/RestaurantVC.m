@@ -490,10 +490,10 @@
         return;
     }
     
-    if ([SUser isNeedLogin]) {
-        [self gotoLoginVC];
-        return;
-    }
+//    if ([SUser isNeedLogin]) {
+//        [self gotoLoginVC];
+//        return;
+//    }
 
     SSeller *seller = [self.tempArray objectAtIndex:indexPath.row];
 

@@ -330,7 +330,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC6-OF-ZUF">
-                                    <rect key="frame" x="33" y="314" width="48" height="14.5"/>
+                                    <rect key="frame" x="33" y="314" width="48" height="15"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.61960784310000006" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -365,7 +365,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合      计：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-CE-gX9">
-                                            <rect key="frame" x="8" y="63" width="65.5" height="18"/>
+                                            <rect key="frame" x="8" y="63" width="66" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="QT8-T8-Z7y"/>
                                                 <constraint firstAttribute="height" constant="18" id="k5b-W8-IP2"/>
@@ -407,7 +407,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运       费:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvq-6l-LuA">
-                                                    <rect key="frame" x="8" y="15" width="59.5" height="18"/>
+                                                    <rect key="frame" x="8" y="15" width="60" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="Fjq-v8-4Jx"/>
                                                         <constraint firstAttribute="height" constant="18" id="L87-HY-goN"/>
@@ -487,7 +487,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电     话：某" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-QN-OAF">
-                                            <rect key="frame" x="8" y="34" width="75.5" height="18"/>
+                                            <rect key="frame" x="8" y="34" width="76" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="UVm-NQ-n3s"/>
                                                 <constraint firstAttribute="height" constant="18" id="ieL-gq-YXu"/>
@@ -502,7 +502,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地     址：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHm-s3-hPa">
-                                            <rect key="frame" x="8" y="60" width="61.5" height="18"/>
+                                            <rect key="frame" x="8" y="60" width="62" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="CKQ-I5-533"/>
                                                 <constraint firstAttribute="height" constant="18" id="c2Z-TK-hbF"/>
@@ -517,7 +517,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重庆" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vax-kZ-3sV">
-                                            <rect key="frame" x="69" y="61" width="28" height="16.5"/>
+                                            <rect key="frame" x="69" y="61" width="28" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="2BW-zB-PKS"/>
                                                 <constraint firstAttribute="height" constant="40" id="y6C-l6-5ry"/>
@@ -616,7 +616,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ju-Fx-BRr">
-                                            <rect key="frame" x="78" y="190" width="28" height="16.5"/>
+                                            <rect key="frame" x="78" y="190" width="28" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="CJp-ze-B0w"/>
                                                 <constraint firstAttribute="height" constant="18" id="l6y-Qh-Mml"/>
@@ -721,7 +721,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTE-aa-vsj">
-                            <rect key="frame" x="15" y="10" width="137.5" height="40"/>
+                            <rect key="frame" x="15" y="10" width="138" height="40"/>
                             <color key="backgroundColor" red="0.2666666667" green="0.62352941179999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="jHd-ga-rLH"/>
@@ -731,7 +731,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5C5-Z5-s56">
-                            <rect key="frame" x="167" y="10" width="137.5" height="40"/>
+                            <rect key="frame" x="167" y="10" width="138" height="40"/>
                             <color key="backgroundColor" red="0.97647058819999999" green="0.023529411760000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="G4u-zT-w2u"/>
@@ -741,7 +741,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olU-JS-6U4">
-                            <rect key="frame" x="15" y="10" width="289.5" height="40"/>
+                            <rect key="frame" x="15" y="10" width="290" height="40"/>
                             <color key="backgroundColor" red="0.97647058819999999" green="0.023529411760000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Lie-el-C9X"/>

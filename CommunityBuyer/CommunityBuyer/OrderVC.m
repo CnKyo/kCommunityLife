@@ -177,25 +177,19 @@
   
     
     NSMutableArray *statuAry =  NSMutableArray.new;
+    NSArray *btnArr = @[cell.mRightBT,cell.mLeftBT];
+
     SEL selectorAry[6];
     int index = 0;
-    
-    if (order.mIsCanDelete) {//删除订单
+    if(((order.mIsCanDelete || order.mIsCanRate) && statuAry.count<2) || statuAry.count == 0){
         
-        [statuAry addObject:@"删除订单"];
-        selectorAry[index] = @selector(deleteAction:);
+        [statuAry addObject:@"去逛逛"];
+        selectorAry[index] = @selector(GoAction:);
         index++;
     }
-    if (order.mIsCanRate) {//评价
-        
-        [statuAry addObject:@"评价"];
-        selectorAry[index] = @selector(PingjiaAction:);
-        index++;
-    }
-    if (order.mIsCanCancel) {//取消订单
-        
-        [statuAry addObject:@"取消订单"];
-        selectorAry[index] = @selector(cancelAction:);
+    if (order.mIsCanConfirm) {//确认完成
+        [statuAry addObject:@"确认完成"];
+        selectorAry[index] = @selector(comfirmAction:);
         index++;
     }
     if (order.mIsCanPay) {//去支付
@@ -205,45 +199,43 @@
         index++;
         
     }
-    if (order.mIsCanConfirm) {//确认完成
-        [statuAry addObject:@"确认完成"];
-        selectorAry[index] = @selector(comfirmAction:);
+    if (order.mIsCanCancel) {//取消订单
+        
+        [statuAry addObject:@"取消订单"];
+        selectorAry[index] = @selector(cancelAction:);
+        index++;
+    }
+    if (order.mIsCanRate) {//评价
+        
+        [statuAry addObject:@"评价"];
+        selectorAry[index] = @selector(PingjiaAction:);
+        index++;
+    }
+    if (order.mIsCanDelete) {//删除订单
+        
+        [statuAry addObject:@"删除订单"];
+        selectorAry[index] = @selector(deleteAction:);
         index++;
     }
     
+ 
     
-    if(((order.mIsCanDelete || order.mIsCanRate) && statuAry.count<2) || statuAry.count == 0){
-        
-        [statuAry addObject:@"去逛逛"];
-        selectorAry[index] = @selector(GoAction:);
-        index++;
-    }
-    
-    
-    if(statuAry.count == 2){
-        
-        cell.mLeftBT.hidden = NO;
-        cell.mRightBT.hidden = NO;
-//        _mOneBT.hidden = YES;
-        [cell.mLeftBT setTitle:[statuAry objectAtIndex:0] forState:UIControlStateNormal];
-        [cell.mLeftBT addTarget:self action:selectorAry[0] forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell.mRightBT setTitle:[statuAry objectAtIndex:1] forState:UIControlStateNormal];
-        [cell.mRightBT addTarget:self action:selectorAry[1] forControlEvents:UIControlEventTouchUpInside];
-        
-        
-    }else if (statuAry.count == 1){
-        
-        cell.mLeftBT.hidden = YES;
-        cell.mRightBT.hidden = NO;
-
-        
-        [cell.mRightBT setTitle:[statuAry objectAtIndex:0] forState:UIControlStateNormal];
-        [cell.mRightBT addTarget:self action:selectorAry[0] forControlEvents:UIControlEventTouchUpInside];
-    }else{
-    
-        cell.mLeftBT.hidden = YES;
-        cell.mRightBT.hidden = YES;
+    for (int i = 0; i<2; i++) {
+        myActButton *bbb = btnArr[i];
+        if (i <statuAry.count) {
+            bbb.hidden = NO;
+            [bbb setTitle:statuAry[i] forState:UIControlStateNormal];
+            if( bbb.mAct != NULL )
+            {
+                [bbb removeTarget:self action:bbb.mAct forControlEvents:UIControlEventTouchUpInside];
+            }
+            [bbb addTarget:self action:selectorAry[i] forControlEvents:UIControlEventTouchUpInside];
+            bbb.mAct = selectorAry[i];
+            
+        }
+        else{
+            bbb.hidden = YES;
+        }
     }
 
     
@@ -296,7 +288,7 @@
     SOrderObj *order = [arr objectAtIndex:indexpath.row];
     tempOrder = order;
     
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入取消理由" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您确定要取消订单吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     //    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert show];
     
@@ -372,8 +364,9 @@
             [SVProgressHUD showSuccessWithStatus:@"操作成功"];
             order.mIsCanConfirm = NO;
             order.mIsCanRate = YES;
+            
             [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_ww inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_ww inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
             [self.tableView endUpdates];
         }
         else

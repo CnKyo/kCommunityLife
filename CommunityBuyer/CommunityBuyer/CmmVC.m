@@ -202,7 +202,7 @@
             [vcs removeLastObject];
             [vcs removeLastObject];
             [vcs addObject:vcc];
-            [self.navigationController setViewControllers:vcs   animated:YES];
+            [self.navigationController pushViewController:vcc   animated:YES];
         }
         else
             [SVProgressHUD showErrorWithStatus:resb.mmsg];

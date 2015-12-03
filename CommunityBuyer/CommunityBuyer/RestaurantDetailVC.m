@@ -96,7 +96,13 @@
         
         sunNum =0;
         sumPrice = 0;
-        
+    
+        if ([SUser isNeedLogin]) {
+//            [self gotoLoginVC];
+            [self getGoods];
+            return;
+        }
+    
         [SVProgressHUD showWithStatus:@"加载中" maskType:SVProgressHUDMaskTypeClear];
         [[SUser currentUser] getMyShopCar:^(SResBase *resb, NSArray *all) {
             [self headerEndRefresh];
@@ -155,35 +161,39 @@
             
             if(self.tempArray.count >0){
             
-                //遍历购物车
-                for (SCarSeller *carSeller in mainAry) {
+                if (mainAry.count>0) {
                     
-                    if(carSeller.mId == _mSeller.mId){
+                    //遍历购物车
+                    for (SCarSeller *carSeller in mainAry) {
                         
-                        for(SCarGoods *carGoods in carSeller.mCarGoods){
+                        if(carSeller.mId == _mSeller.mId){
                             
-                            sunNum += carGoods.mNum;
-                            sumPrice +=carGoods.mPrice*carGoods.mNum;
-                            //遍历商品列表
-                            for (SGoodsPack *pack in self.tempArray) {
+                            for(SCarGoods *carGoods in carSeller.mCarGoods){
                                 
-                                for (SGoods *goods in pack.mGoods) {
+                                sunNum += carGoods.mNum;
+                                sumPrice +=carGoods.mPrice*carGoods.mNum;
+                                //遍历商品列表
+                                for (SGoodsPack *pack in self.tempArray) {
                                     
-                                    if (goods.mId == carGoods.mGoodsId) {
+                                    for (SGoods *goods in pack.mGoods) {
                                         
+                                        if (goods.mId == carGoods.mGoodsId) {
+                                            
+                                            
+                                            goods.mCount = carGoods.mNum;
+                                            
+                                        }
                                         
-                                        goods.mCount = carGoods.mNum;
+                                        [SCarSeller getCarInfoWithGoods:goods];//获取对应商品在购物车内数量
                                         
                                     }
-                                    
-                                    [SCarSeller getCarInfoWithGoods:goods];//获取对应商品在购物车内数量
-                                    
                                 }
                             }
+                            
                         }
-                        
                     }
                 }
+                
                 
                 UINib *nib = [UINib nibWithNibName:@"leftcell" bundle:nil];
                 [self.tableView registerNib:nib forCellReuseIdentifier:@"leftcell"];
@@ -281,12 +291,14 @@
     badgeView.badgeStrokeWidth = 5;
     
     if(sunNum<=0){
+//        badgeView.badgeText = @"购物车空空如也";
         badgeView.hidden = YES;
     }else{
+       
         badgeView.hidden = NO;
     }
+     badgeView.badgeText = [NSString stringWithFormat:@"%d",sunNum];
     
-    badgeView.badgeText = [NSString stringWithFormat:@"%d",sunNum];
     badgeView.badgeBackgroundColor = M_CO;
     _mSumPrice.text = [NSString stringWithFormat:@"¥%.2f元",sumPrice];
     
@@ -583,6 +595,7 @@
                 cell.mPrice.text = [NSString stringWithFormat:@"¥%.2f",goods.mPrice];
                 cell.mImg.layer.masksToBounds = YES;
                 cell.mImg.layer.cornerRadius = 3;
+                cell.mNormName.text = norm.mName;
             }else{
                 cell.mPrice.text = [NSString stringWithFormat:@"¥%.2f",norm.mPrice];
                 cell.mNormName.text = norm.mName;
@@ -721,7 +734,7 @@ char* g_asskey = "g_asskey";
         
         SGoodsPack *pack = [self.tempArray objectAtIndex:leftSelect];
         
-        SGoods *goods = [pack.mGoods objectAtIndex:indexPath.row];
+        SGoods *goods = [pack.mGoods objectAtIndex:indexPath.section];
 
         SellerDetailVC *seller = [[SellerDetailVC alloc] initWithNibName:@"SellerDetailVC" bundle:nil];
         seller.mGoods = goods;
@@ -945,8 +958,14 @@ char* g_asskey = "g_asskey";
 
 - (void)delNum:(int)num andGoods:(SGoods *)goods andNorm:(SGoodsNorms *)norm{
 
+        if ([SUser isNeedLogin]) {
+            [self gotoLoginVC];
+            return;
+        }
+    
         goods.mCount +=num;
-        
+        norm.mCount +=num;
+    
         [SVProgressHUD showWithStatus:@"操作中" maskType:SVProgressHUDMaskTypeClear];
         [goods addToCart:norm.mId block:^(SResBase *info, NSArray *all){
             
@@ -978,6 +997,11 @@ char* g_asskey = "g_asskey";
                     
                     
                 }
+                if(sunNum>0){
+                    badgeView.hidden = NO;
+                }else{
+                    badgeView.hidden = YES;
+                }
                 badgeView.badgeText = [NSString stringWithFormat:@"%d",sunNum];
                 _mSumPrice.text = [NSString stringWithFormat:@"¥%.2f元",sumPrice];
                 
@@ -992,6 +1016,7 @@ char* g_asskey = "g_asskey";
             }else{
                 
                 goods.mCount -=num;
+                norm.mCount -=num;
                 
                 [SVProgressHUD showErrorWithStatus:info.mmsg];
             }

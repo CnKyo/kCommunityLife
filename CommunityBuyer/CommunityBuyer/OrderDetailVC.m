@@ -280,7 +280,7 @@
     if(((_mTagOrder.mIsCanDelete || _mTagOrder.mIsCanRate) && statuAry.count<2) || statuAry.count == 0){
     
         [statuAry addObject:@"去逛逛"];
-        selectorAry[index] = @selector(deleteAction);
+        selectorAry[index] = @selector(GoAction);
         index++;
     }
     
@@ -331,7 +331,7 @@
 //取消订单
 - (void)cancelAction{
     
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入取消理由" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您确定要取消订单吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     //    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert show];
     
@@ -474,8 +474,9 @@
         RestaurantDetailVC *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RestaurantDetailVC"];
         SSeller *seller = [[SSeller alloc] init];
         seller.mId = _mTagOrder.mSellerId;
+        seller.mName = _mTagOrder.mSellerName;
         viewController.mSeller = seller;
-        
+
         [self.navigationController pushViewController:viewController animated:YES];
     }else{
         
@@ -483,6 +484,7 @@
         
         SSeller *seller = [[SSeller alloc] init];
         seller.mId = _mTagOrder.mSellerId;
+        seller.mName = _mTagOrder.mSellerName;
         serviceVC.mSeller = seller;
         [self pushViewController:serviceVC];
         

@@ -312,6 +312,9 @@
     
     if( !bopenwith )
     {//当前用户正在APP内部,,
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"pushnotfi" object:nil];
+        
         myalert *alertVC = [[myalert alloc]initWithTitle:@"提示" message:@"有新的消息是否查看?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"好的", nil];
         alertVC.obj = pushobj;
         [alertVC show];

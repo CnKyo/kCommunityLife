@@ -136,8 +136,14 @@
     
     [self loadTop];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushcoming:) name:@"pushnotfi" object:nil];
     
 }
+-(void)pushcoming:(id)sender
+{
+    [self updateHeaderInfo];
+}
+
 
 - (void)CallClick:(UITapGestureRecognizer *)sender{
 
